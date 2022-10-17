@@ -19,17 +19,17 @@ public class HomeController {
     }
     @GetMapping(value = "/")
     public String home(){
-        return "home";
+        return "/home";
     }
     @PostMapping(value = "/validate")
     public String user(@RequestParam("email") String email, ModelMap modelMap){
        boolean isValid=this.validate(email);
         if(!isValid){
             modelMap.addAttribute("message","email is invalid");
-            return "home";
+            return "/home";
         }
         modelMap.addAttribute("email",email);
-        return "success";
+        return "/success";
     }
     private boolean validate(String regex){
         matcher=pattern.matcher(regex);
